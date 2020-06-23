@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* provide controllers
+* support dash drm encrypted content at the moment
