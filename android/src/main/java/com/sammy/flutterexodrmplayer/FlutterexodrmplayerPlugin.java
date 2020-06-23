@@ -11,6 +11,7 @@ import android.util.LongSparseArray;
 import android.util.Pair;
 import android.view.Surface;
 import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.ViewGroup;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -227,7 +228,10 @@ public class FlutterexodrmplayerPlugin implements MethodCallHandler {
               });
 
       surface = new Surface(textureEntry.surfaceTexture());
-
+      TextureView textureView = new TextureView(context);
+      textureView.setLayoutParams(new ViewGroup.LayoutParams(
+              ViewGroup.LayoutParams.MATCH_PARENT,
+              ViewGroup.LayoutParams.MATCH_PARENT));
       SurfaceView view = new SurfaceView(context);
       view.setLayoutParams(new ViewGroup.LayoutParams(
               ViewGroup.LayoutParams.MATCH_PARENT,
@@ -239,6 +243,8 @@ public class FlutterexodrmplayerPlugin implements MethodCallHandler {
               ViewGroup.LayoutParams.MATCH_PARENT));
       player.setPlayer(exoPlayer);
       player.getSubtitleView().setBackgroundColor(0xFFFFFFFF);
+      exoPlayer.setVideoSurfaceView(view);
+      exoPlayer.setVideoTextureView(textureView);
       exoPlayer.setVideoSurfaceHolder(view.getHolder());
       exoPlayer.setVideoSurface(surface);
 
@@ -321,7 +327,6 @@ public class FlutterexodrmplayerPlugin implements MethodCallHandler {
 
     void play() {
       exoPlayer.setPlayWhenReady(true);
-      exoPlayer.getPlaybackState();
     }
 
     void setLooping(boolean value) {

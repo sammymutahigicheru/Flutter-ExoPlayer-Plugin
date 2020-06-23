@@ -1,8 +1,7 @@
 name: flutterexodrmplayer
 description: A new Flutter plugin.
-version: 0.0.1
-author:
-homepage:
+version: 0.0.2
+homepage: https://github.com/sammymutahigicheru/Flutter-ExoPlayer-
 
 environment:
   sdk: ">=2.3.0 <3.0.0"
